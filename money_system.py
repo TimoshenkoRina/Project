@@ -20,7 +20,13 @@ class MoneySystem:
         while True:
             print(f"\nВаш баланс: {self.balance}")
             try:
-                bet_input = int(input("Сделайте вашу ставку (0 для выхода): "))
+                bet_input = input("Сделайте вашу ставку (0 для выхода): ")
+
+                if bet_input == 'ITMO':
+                    self.add_money(10000)
+                    continue
+
+                bet_input = int(bet_input)
 
                 if bet_input == 0:
                     return 0
