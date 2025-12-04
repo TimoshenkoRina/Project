@@ -2,6 +2,7 @@ from money_system import MoneySystem
 from games.chests import ChestsGame
 from games.roll import Roulette
 from games.slots import SlotsGame
+from games.black_jack import BlackjackGame
 
 def main():
     """главная функция запуска консоли"""
@@ -14,6 +15,7 @@ def main():
         print("1. Сундучки")
         print("2. Рулетка")
         print("3. Слоты")
+        print("4. Блэкджек")
         print("0. Выход")
 
         choice = input("Выбор > ")
@@ -27,6 +29,9 @@ def main():
             game.start_game()
         elif choice == '3':
             game = SlotsGame(wallet)
+            game.start_game()
+        elif choice == '4':
+            game = BlackjackGame(wallet)
             game.start_game()
         elif choice == '0':
             print("Пока!")
