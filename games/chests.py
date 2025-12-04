@@ -250,15 +250,12 @@ class ChestsGame:
 
     def start_game(self):
         """главный цикл игры"""
-        print("\nСУНДУЧКИ")
+        print("\n==СУНДУЧКИ==")
         time.sleep(2)
 
         bet = self.money_sys.place_bet()
         if bet == 0:
             return
-
-        print("ИГРА НАЧАЛАСЬ!")
-        time.sleep(2)
 
         self.deal_cards() # Раздаем карты
 
