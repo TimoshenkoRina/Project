@@ -1,53 +1,15 @@
 import random
-from typing import List, Optional
+from typing import List
 import time
+from games.cards import Deck, Card
 
 main_ranks=['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-
 main_suits=['буби', 'черви', 'крести', 'пики']
-
-class Card:
-    """собираем карты"""
-    def __init__(self, suit, rank):
-        self.suit = suit
-        self.rank = rank
-
-    def __repr__(self):
-        """записываем, как будет выглядеть карта"""
-        return f'{self.rank} {self.suit}'
-
-    def __eq__(self, other):
-        """говорим, что одинаковая карта по названию
-        - это одинаковая карта в коде"""
-        return self.rank == other.rank and self.suit == other.suit
-
-class Deck:
-    """создаем колоду"""
-    def __init__(self):
-        """генерируем колоду и мешаем её"""
-        self.cards=[Card(y, x) for x in main_ranks for y in main_suits]
-        self.shuffle()
-
-    def shuffle(self):
-        """что бы перемешать колоду с помощью рандома"""
-        random.shuffle(self.cards)
-
-    def draw(self) -> Optional[Card]:
-        """в колоде может быть карта, а может не быть,
-        поэтому обязательно прописываем, что может быть
-        конкретная карта в функции, а может быть None"""
-        if not self.cards:
-            return None
-        return self.cards.pop()
-
-    def __len__(self):
-        """задаем классу колоды длину"""
-        return len(self.cards)
 
 class Player:
     def __init__(self, name):
         self.name = name
-        self.hand: List[Card] = [] #внутри списка лежат только карты
+        self.hand: List[Card] = []
         self.chests = 0
 
     def add_cards(self, cards):
@@ -73,7 +35,7 @@ class Player:
         у тебя их 1/2/3?"""
         return sum(1 for c in self.hand if c.rank == rank)
 
-    def has_suits(self, rank,suits):
+    def has_suits(self, rank, suits):
         """третий вопрос
         это пики/буби/черви/крести?
         сравниваем масти на руке с мастью, которую спросили"""
@@ -162,9 +124,9 @@ class HumanPlayer(Player):
 class ChestsGame:
     """ход игры"""
     def __init__(self, money_sys):
-        """вводим денежную систему"""
         self.money_sys = money_sys
-        self.deck = Deck()
+        self.deck = Deck(size=36)
+
         self.computer = ComputerPlayer("Компьютер")
         self.human = HumanPlayer("Пользователь")
 
