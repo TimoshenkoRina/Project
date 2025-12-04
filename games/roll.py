@@ -71,7 +71,7 @@ class Roulette:
 
     def start_game(self):
         """ход игры"""
-        print("\nРУЛЕТКА")
+        print("\n==РУЛЕТКА==")
         for i in range (5):
             # смотрим сколько денег у игрока
             bet = self.money_sys.place_bet()
