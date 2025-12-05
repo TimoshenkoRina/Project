@@ -29,7 +29,7 @@ class Roulette:
 
     def get_bet_details(self):
         """выбор пользователя"""
-        print("\n1. Число (x35)\n2. Цвет (x2)\n3. Чет/Нечет (x2)\n4. Выход")
+        print("\n1. Число (x35)\n2. Цвет (x3)\n3. Чет/Нечет (x3)\n4. Выход")
         choice = input("Выбор: ")
 
         if choice == '1':
